@@ -1,14 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import fs from 'fs';
 
 const app = express();
 
 app.use(express.json());
-
 app.use(cors());
 
-const dataFilePath = 'data.txt';
+let dataArray: string[] = [];
 
 app.get('/save', (req, res) => {
     const content = req.query.content;
@@ -16,23 +14,12 @@ app.get('/save', (req, res) => {
         return res.status(400).send('Content parameter is missing.');
     }
 
-    fs.appendFile(dataFilePath, content + '\n', err => {
-        if (err) {
-            console.error('Error writing to file:', err);
-            return res.status(500).send('Error saving content. ' + err);
-        }
-        res.status(200).send('Content saved successfully.');
-    });
+    dataArray.push(content as string);
+    res.status(200).send('Content saved successfully.');
 });
 
 app.get('/retrieve', (req, res) => {
-    fs.readFile(dataFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            return res.status(500).send('Error retrieving content.');
-        }
-        res.status(200).send(data);
-    });
+    res.status(200).send(dataArray.join('\n'));
 });
 
 app.get('/', (req, res) => {
