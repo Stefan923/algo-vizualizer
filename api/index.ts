@@ -19,7 +19,7 @@ app.get('/save', (req, res) => {
     fs.appendFile(dataFilePath, content + '\n', err => {
         if (err) {
             console.error('Error writing to file:', err);
-            return res.status(500).send('Error saving content.');
+            return res.status(500).send('Error saving content. ' + err);
         }
         res.status(200).send('Content saved successfully.');
     });
