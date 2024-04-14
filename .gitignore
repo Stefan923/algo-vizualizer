@@ -6,6 +6,7 @@
 /frontend/dist
 /frontend/tmp
 /frontend/out-tsc
+/node_modules
 # Only exists if Bazel was run
 /frontend/bazel-out
 
